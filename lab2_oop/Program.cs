@@ -1,7 +1,25 @@
-﻿using lab2_oop.Constructions;
-using System.Security.Principal;
+﻿using System;
+using lab2_oop.Constructions;
 
-var construction1 = new Construction();
-var construction2 = new Construction(23.0f, 45.0f, 4, 4, "Material");
+class Program
+{
+    static void Main()
+    {
+        var construction = new Construction(29.7f, 45.4f, 5, 124, "Material");
 
-Console.WriteLine(construction2.Height);
+        Console.WriteLine("Height: " + construction.Height);
+        Console.WriteLine("Width: " + construction.Width);
+        Console.WriteLine("Entrances: " + construction.Entrances);
+        Console.WriteLine("Human Capacity: " + construction.HumanCapacity);
+        Console.WriteLine("Build Material: " + construction.BuildMaterial);
+
+        try
+        {
+            construction.BuildMaterial = "";
+        }
+        catch (ArgumentNullException ex)
+        {
+            Console.WriteLine("Exception caught: " + ex.Message);
+        }
+    }
+}

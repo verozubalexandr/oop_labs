@@ -8,10 +8,13 @@ namespace lab2_oop.Constructions
 {
     internal class Construction
     {
+        private string _BuildMaterial;
+
         public Construction()
         {
             
         }
+
         public Construction(float height, float width, int entrances, int humanCapacity, string buildMaterial)
         {
             Height = height;
@@ -25,6 +28,20 @@ namespace lab2_oop.Constructions
         public float Width { get; set; }
         public int Entrances { get; set; }
         public int HumanCapacity { get; set; }
-        public string BuildMaterial { get; set; }
+        public string BuildMaterial 
+        { 
+            get 
+            {
+                return _BuildMaterial;
+            }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentNullException(nameof(value));
+                }
+                _BuildMaterial = value;
+            }
+        }
     }
 }
